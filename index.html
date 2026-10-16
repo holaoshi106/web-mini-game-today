@@ -60,7 +60,7 @@
             </div>
             <div>
                 <h1 class="font-orbitron font-black text-xl sm:text-2xl tracking-wider bg-gradient-to-r from-blue-400 to-indigo-300 bg-clip-text text-transparent">SPEED CLASH</h1>
-                <p class="text-xs text-slate-400">30秒極速連點大對決 vs AI</p>
+                <p class="text-xs text-slate-400">10秒極速連點大對決</p>
             </div>
         </div>
         <button id="soundToggleBtn" onclick="toggleSound()" class="glass-panel px-3 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 transition flex items-center space-x-2 text-sm">
@@ -121,9 +121,9 @@
             <div class="absolute -right-10 -bottom-10 text-blue-500/10 text-9xl pointer-events-none">
                 <i class="fa-solid fa-hand-pointer"></i>
             </div>
-            <h2 class="font-orbitron text-3xl sm:text-4xl font-black mb-3 bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">30 秒連點大對決</h2>
+            <h2 class="font-orbitron text-3xl sm:text-4xl font-black mb-3 bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">10 秒極速連點大對決</h2>
             <p class="text-slate-400 text-sm sm:text-base mb-8 max-w-md mx-auto">
-                挑戰每秒點擊 5 下的 AI 機器人！支援滑鼠點擊，或瘋狂按 <kbd class="px-2 py-1 bg-slate-800 text-blue-300 rounded border border-slate-700 font-mono text-xs">Space</kbd> / <kbd class="px-2 py-1 bg-slate-800 text-blue-300 rounded border border-slate-700 font-mono text-xs">Enter</kbd> 鍵爭奪最速寶座！
+                挑戰每秒點擊 5 下的 AI 機器人！10 秒鐘生死決鬥，支援滑鼠點擊，或瘋狂按 <kbd class="px-2 py-1 bg-slate-800 text-blue-300 rounded border border-slate-700 font-mono text-xs">Space</kbd> / <kbd class="px-2 py-1 bg-slate-800 text-blue-300 rounded border border-slate-700 font-mono text-xs">Enter</kbd> 鍵爭奪最速寶座！
             </p>
             <button onclick="startGame()" class="glow-btn bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-lg px-8 py-4 rounded-2xl shadow-lg transition transform hover:-translate-y-0.5 cursor-pointer">
                 <i class="fa-solid fa-play mr-2"></i> 開始對決
@@ -210,8 +210,8 @@
 
     <!-- JavaScript 遊戲核心邏輯 -->
     <script>
-        // 遊戲常數與狀態變數
-        const GAME_DURATION = 30; // 遊戲秒數
+        // 遊戲常數與狀態變數 (已將遊戲時間改為 10 秒)
+        const GAME_DURATION = 10; // 遊戲秒數改為 10 秒
         const AI_TARGET_CPS = 5.0; // AI 目標每秒點擊數
 
         let gameState = 'IDLE'; // IDLE, COUNTDOWN, PLAYING, RESULT
@@ -512,7 +512,7 @@
                 badge.className = "inline-block px-4 py-1.5 rounded-full text-sm font-bold mb-4 shadow-lg bg-blue-500/20 text-blue-400 border border-blue-500/30";
                 badge.innerHTML = `<i class="fa-solid fa-trophy mr-1"></i> 勝利達成`;
                 title.innerText = "太神啦！你擊敗了 AI！";
-                subtitle.innerHTML = `在 30 秒內，你以 <span class="text-blue-400 font-bold">${playerScore} 點</span> 對決機器人的 <span class="text-rose-400 font-bold">${finalAiScore} 點</span>。<br>你成功領先了 <span class="text-emerald-400 font-bold">${diff} 點</span>！`;
+                subtitle.innerHTML = `在 10 秒內，你以 <span class="text-blue-400 font-bold">${playerScore} 點</span> 對決機器人的 <span class="text-rose-400 font-bold">${finalAiScore} 點</span>。<br>你成功領先了 <span class="text-emerald-400 font-bold">${diff} 點</span>！`;
                 playSound('win');
             } else if (diff < 0) {
                 badge.className = "inline-block px-4 py-1.5 rounded-full text-sm font-bold mb-4 shadow-lg bg-rose-500/20 text-rose-400 border border-rose-500/30";
@@ -543,7 +543,7 @@
             const finalAiScore = Math.floor(aiScore);
             const diff = playerScore - finalAiScore;
             const status = diff > 0 ? `🏆 擊敗 AI 贏了 ${diff} 點！` : (diff < 0 ? `🤖 輸給 AI ${Math.abs(diff)} 點` : `🤝 與 AI 平手！`);
-            const text = `⚡【30秒極速連點大對決】⚡\n${status}\n我的總點擊：${playerScore} 點\n平均速度：${(playerScore / GAME_DURATION).toFixed(1)} CPS\n最高連擊：${maxCombo} Combo\n快來挑戰我！`;
+            const text = `⚡【10秒極速連點大對決】⚡\n${status}\n我的總點擊：${playerScore} 點\n平均速度：${(playerScore / GAME_DURATION).toFixed(1)} CPS\n最高連擊：${maxCombo} Combo\n快來挑戰我！`;
 
             const dummy = document.createElement('textarea');
             document.body.appendChild(dummy);
